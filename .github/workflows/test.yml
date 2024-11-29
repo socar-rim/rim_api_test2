@@ -24,8 +24,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'  # 또는 필요한 Node.js 버전
+          
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
         run: |
           npm install -g newman newman-reporter-slackmsg
-
+          
+     # 4. Run Postman Collection
+      - name: Run Postman Collection
+        run: |
+          TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+          echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+          newman run ./login.postman_collection.json \
+            --suppress-exit-code \
+            -r cli,slackmsg \
+            --reporter-slackmsg-webhookurl 'https://slack.com/api/chat.postMessage' \
+            --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
+            --reporter-slackmsg-channel '#noti_qa_auto_github'
