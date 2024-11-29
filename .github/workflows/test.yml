@@ -35,7 +35,7 @@ jobs:
         run: |
           TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
           echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
-          newman run ./login.postman_collection.json \
+          newman run ./Login.json \
             --suppress-exit-code \
             -r cli,slackmsg \
             --reporter-slackmsg-webhookurl 'https://slack.com/api/chat.postMessage' \
