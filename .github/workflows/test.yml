@@ -4,10 +4,10 @@ on:     # 워크플로우가 언제 실행될지 설정하는 부분으로, 필�
   schedule:
     - cron: '0 8 * * *'  # 매일 오후 5시 (KST 기준, UTC 8시)
 
-#  push:
-  pull_request:
+  push:
     branches:
-      - main # 'main' 브랜치로 PR이 열리거나 병합 시도될 때만 실행
+      - main
+      
   workflow_dispatch:  # UI에서 수동 실행 가능
 
 jobs:
