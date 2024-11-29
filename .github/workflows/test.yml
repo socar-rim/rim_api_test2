@@ -4,10 +4,6 @@ on:     # 워크플로우가 언제 실행될지 설정하는 부분으로, 필�
   schedule:
     - cron: '0 8 * * *'  # 매일 오후 5시 (KST 기준, UTC 8시)
 
-
-  push:
-    branches:[main]
-
 #  push:
   pull_request:
     branches:
