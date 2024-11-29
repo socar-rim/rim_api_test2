@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repository
+      # 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'  # 또는 필요한 Node.js 버전
+          node-version: '22'  # 튻정 Node.js 버전을 사용하도록 설정
           
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
