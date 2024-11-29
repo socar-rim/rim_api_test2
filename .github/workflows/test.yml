@@ -38,6 +38,5 @@ jobs:
           newman run ./Login.json \
             --suppress-exit-code \
             -r cli,slackmsg \
-            --reporter-slackmsg-webhookurl 'https://slack.com/api/chat.postMessage' \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-channel '#rim_api_noti'
