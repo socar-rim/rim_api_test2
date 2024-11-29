@@ -19,9 +19,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-        # 2. Install Node.js to use npm
+      # 2. Install Node.js to use npm
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'  # 또는 필요한 Node.js 버전
+      # 3. Install Newman and Slack Reporter
+      - name: Install Newman and Slack Reporter
+        run: |
+          npm install -g newman newman-reporter-slackmsg
 
