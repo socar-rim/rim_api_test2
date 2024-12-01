@@ -1,8 +1,8 @@
 name: Rim Tests  # 워크플로우 이름
 
 on:     # 워크플로우가 언제 실행될지 설정하는 부분으로, 필수항목
-  schedule:
-    - cron: '0 8 * * *'  # 매일 오후 5시 (KST 기준, UTC 8시)
+  # schedule:
+   # - cron: '0 8 * * *'  # 매일 오후 5시 (KST 기준, UTC 8시)
 
   push: # 특정 브랜치로 push될때마다 실행하도록 설정 
     branches:
