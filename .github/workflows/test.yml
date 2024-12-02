@@ -35,6 +35,7 @@ jobs:
           newman run ./Login.json \
             # --suppress-exit-code \  # 테스트가 실패해도 수행되도록 하는 설정값 
             -r cli,slackmsg \
+            --suppress-exit-code \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
             --reporter-slackmsg-channel '#rim_api_noti' \
