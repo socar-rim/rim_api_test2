@@ -38,7 +38,7 @@ jobs:
 
       - name : Check Newman Report for Errors and Notify Slack
         run : |
-          if grep -i '"error"' Login.json; then
+          if grep -i '"error"' Login-report.json; then
               -r slackmsg \
               --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
               --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
