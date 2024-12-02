@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
-      - name: Checkout repository
+      
+      - name: Checkout repository # 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
         uses: actions/checkout@v3
 
       # 2. Install Node.js to use npm
