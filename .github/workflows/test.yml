@@ -43,7 +43,8 @@ jobs:
             
           if grep '"error"' ./Login.json; then
             newman run ./Login.json \
-              -r slackmsg \
+              -r cli,slackmsg \
+              --suppress-exit-code \
               --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
               --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
               --reporter-slackmsg-channel '#rim_api_noti' \
