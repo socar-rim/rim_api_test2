@@ -34,7 +34,7 @@ jobs:
         run: |
           newman run ./Login.json \
             --suppress-exit-code  \ # 테스트가 실패해도 수행되도록 하는 설정값 
-            --reporter-json-export Login-report.json
+            --reporter-json-export Login.json
             # -r cli,slackmsg \
             # --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             # --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
@@ -43,7 +43,7 @@ jobs:
 
       - name : Check Newman Report for Errors and Notify Slack
         run : |
-          if grep -i '"error"' Login-report.json; then
+          if grep -i '"error"' Login.json; then
               -r slackmsg \
               --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
               --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
