@@ -46,8 +46,7 @@ jobs:
               -r slackmsg \
               --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
               --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
-              --reporter-slackmsg-channel '#rim_api_noti' \
-              --data '{"text": "❌ Newman 테스트 실패: 자세한 내용은 로그를 확인하세요."}'
+              --reporter-slackmsg-channel '#rim_api_noti' 
           else
             echo "Test passed, no error found."
           fi
