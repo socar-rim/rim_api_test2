@@ -27,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"qwer1234!!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser1@yopmail.com\"\n}",
+					"raw": "{\n    \"password\": \"qwer1234!!!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser1@yopmail.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
