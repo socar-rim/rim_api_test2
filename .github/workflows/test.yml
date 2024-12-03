@@ -31,18 +31,62 @@ jobs:
         run: |
           npm install -g newman newman-reporter-slackmsg
           
-      # 4. Run Postman Collection
-      - name: Run Postman Collection
+      # 4. Check if collection file exists
+      - name: Check if Login.json exists
+        id: check_file
+        run: |
+          if [ ! -f ./Login.json ]; then
+            echo "Collection file not found"
+            echo "::set-output name=file_exists::false"
+          else
+            echo "::set-output name=file_exists::true"
+          fi
+
+      # 5. Run Newman Collection only if file exists
+      - name: Run Newman Collection
+        if: steps.check_file.outputs.file_exists == 'true'
         run: |
           newman run ./Login.json \
-            -r cli,slackmsg \
+            -r json,slackmsg \
+            --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
             --reporter-slackmsg-channel '#rim_api_noti'
-        continue-on-error : true
 
+      # 6. Notify Slack if collection file is not found (Using GitHub Script)
+      - name: Notify Slack if Collection File is Missing
+        if: steps.check_file.outputs.file_exists == 'false'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const payload = {
+              text: '❌ Error: Collection file Login.json not found. Please check the file path.'
+            };
+            const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+            const fetch = require('node-fetch');
+            await fetch(webhookUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
 
-      - name :  Check for Newman Failure and Notify Slack
-        if : failure()
-        run : |
-          echo "❌ Error occurred during Newman tests. Check the detailed logs for more information."
+      # 7. Check if Newman Run Failed and Notify Slack (Using GitHub Script)
+      - name: Notify Slack if Newman Run Failed
+        if: failure()  # Newman 실행이 실패한 경우에만 실행
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const payload = {
+              text: '❌ Error occurred during Newman tests: Collection could not be loaded. Please check the collection path or content.'
+            };
+            const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+            const fetch = require('node-fetch');
+            await fetch(webhookUrl, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(payload)
+            });
