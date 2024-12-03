@@ -62,7 +62,7 @@ jobs:
             const payload = {
               text: '❌ Error: Collection file Login.json not found. Please check the file path.'
             };
-            const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+            const webhookUrl = ${{ secrets.SLACK_WEBHOOK_URL }};
             const response = await fetch(webhookUrl, {
               method: 'POST',
               headers: {
@@ -82,7 +82,7 @@ jobs:
             const payload = {
               text: '❌ Error occurred during Newman tests: Collection could not be loaded. Please check the collection path or content.'
             };
-            const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+            const webhookUrl = ${{ secrets.SLACK_WEBHOOK_URL }};
             const response = await fetch(webhookUrl, {
               method: 'POST',
               headers: {
