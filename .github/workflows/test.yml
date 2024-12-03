@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
+      # 1. 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -53,7 +53,7 @@ jobs:
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
             --reporter-slackmsg-channel '#rim_api_noti'
 
-      # 6. Notify Slack if collection file is not found (Using GitHub Script)
+      # 6. Notify Slack if collection file is not found  #longin.json 파일이 해당 경로에 없을때, 슬랙으로 에러 메세지 전송 
       - name: Notify Slack if Collection File is Missing
         if: steps.check_file.outputs.file_exists == 'false'
         uses: actions/github-script@v6
