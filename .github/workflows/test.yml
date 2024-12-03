@@ -75,23 +75,3 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      # 7. Check if Newman Run Failed and Notify Slack (Using GitHub Script)
-      - name: Notify Slack if Newman Run Failed
-        if: failure()  # Newman 실행이 실패한 경우에만 실행
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const payload = {
-              text: '❌ Error occurred during Newman tests: Collection could not be loaded. Please check the collection path or content.'
-            };
-            const webhookUrl = ${{ secrets.SLACK_WEBHOOK_URL }};
-            const response = await fetch(webhookUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(payload)
-            });
-            if (!response.ok) {
-              throw new Error('Failed to send Slack notification');
-            }
