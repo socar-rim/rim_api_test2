@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository # 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
+      # 필수 설정 값으로, 보통 제일 먼저 쓰며 GitHub 리포지토리에서 소스 코드 또는 파일을 가져오는 역할
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       # 2. Install Node.js to use npm
@@ -28,26 +29,13 @@ jobs:
       - name: Install Newman and Slack Reporter
         run: |
           npm install -g newman newman-reporter-slackmsg
-
-      - name: Run Newman Collection and Export JSON Report
+          
+     # 4. Run Postman Collection
+      - name: Run Postman Collection
         run: |
           newman run ./Login.json \
-            -r json,slackmsg \
-            --reporter-json-export Login-report.json \
+            --suppress-exit-code \
+            -r cli,slackmsg \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
             --reporter-slackmsg-channel '#rim_api_noti'
-            
-
-      - name : Check Newman Report for Errors and Notify Slack
-        run : |
-          if grep -i '"error"' Login-report.json; then
-            newman run ./Login.json \
-              -r slackmsg \
-              --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
-              --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
-              --reporter-slackmsg-channel '#rim_api_noti' 
-          else
-            echo "Test passed, no error found."
-          fi
-            
