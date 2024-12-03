@@ -55,7 +55,7 @@ jobs:
 
       # 6. Notify Slack if collection file is not found  #longin.json 파일이 해당 경로에 없을때, 슬랙으로 에러 메세지 전송 
       - name: Notify Slack if Collection File is Missing
-        if: steps.check_file.outputs.file_exists == 'false'
+        if: env.file_exists == 'false'
         uses: actions/github-script@v6
         with:
           script: |
