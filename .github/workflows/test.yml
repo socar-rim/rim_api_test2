@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts'  # 특정 Node.js 버전을 사용하도록 설정
+          node-version: '22'  # 특정 Node.js 버전을 사용하도록 설정
 
       # 3. 의존성 설치 및 업데이트 
       - name : Install and update dependencies
