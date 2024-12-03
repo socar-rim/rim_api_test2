@@ -35,7 +35,6 @@ jobs:
       - name: Run Postman Collection
         run: |
           newman run ./Login.json \
-            --suppress-exit-code \
             -r cli,slackmsg \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
