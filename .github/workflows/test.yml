@@ -37,9 +37,9 @@ jobs:
         run: |
           if [ ! -f ./Login.json ]; then
             echo "Collection file not found"
-            echo "::set-output name=file_exists::false"
+            echo "file_exists=false" >> #GITHUB_ENV
           else
-            echo "::set-output name=file_exists::true"
+            echo "file_exists=true" >> #GITHUB_ENV
           fi
 
       # 5. Run Newman Collection only if file exists
