@@ -62,7 +62,7 @@ jobs:
             const payload = {
               text: '❌ Error: Collection file Login.json not found. Please check the file path.'
             };
-            const webhookUrl = ${{ secrets.SLACK_WEBHOOK_URL }};
+            const webhookUrl = process.env.SLACK_WEBHOOK_URL;
             const response = await fetch(webhookUrl, {
               method: 'POST',
               headers: {
@@ -73,6 +73,8 @@ jobs:
             if (!response.ok) {
               throw new Error('Failed to send Slack notification');
             }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       # 7. Check if Newman Run Failed and Notify Slack (Using GitHub Script)
       - name: Notify Slack if Newman Run Failed
         if: failure()  # Newman 실행이 실패한 경우에만 실행
