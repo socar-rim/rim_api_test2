@@ -25,13 +25,7 @@ jobs:
         with:
           node-version: '22'  # 특정 Node.js 버전을 사용하도록 설정
 
-      # 3. 의존성 설치 및 업데이트 
-      - name : Install and update dependencies
-        run : |
-          npm install -g npm
-          npm install
-          npm update
-          
+        
       # 4. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
         run: |
