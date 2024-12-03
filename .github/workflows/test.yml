@@ -24,13 +24,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'  # 특정 Node.js 버전을 사용하도록 설정
+
+      # 3. 의존성 설치 및 업데이트 
+      - name : Install and update dependencies
+        run : |
+          npm install \
+          npm update
           
-      # 3. Install Newman and Slack Reporter
+      # 4. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
         run: |
           npm install -g newman newman-reporter-slackmsg
           
-     # 4. Run Postman Collection
+      # 5. Run Postman Collection
       - name: Run Postman Collection
         run: |
           newman run ./Login.json \
