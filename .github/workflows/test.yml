@@ -26,12 +26,12 @@ jobs:
           node-version: '22'  # 특정 Node.js 버전을 사용하도록 설정
 
         
-      # 4. Install Newman and Slack Reporter
+      # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
         run: |
           npm install -g newman newman-reporter-slackmsg
           
-      # 5. Run Postman Collection
+      # 4. Run Postman Collection
       - name: Run Postman Collection
         run: |
           newman run ./Login.json \
