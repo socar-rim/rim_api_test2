@@ -44,7 +44,7 @@ jobs:
 
       # 5. Run Newman Collection only if file exists
       - name: Run Newman Collection
-        if: steps.check_file.outputs.file_exists == 'true'
+        if: env.file_exists == 'true'
         run: |
           newman run ./Login.json \
             -r json,slackmsg \
