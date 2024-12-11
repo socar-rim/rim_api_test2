@@ -1,4 +1,4 @@
-name: Rim Tests  # 워크플로우 이름
+name: Rim Test  # 워크플로우 이름
 
 on:     # 워크플로우가 언제 실행될지 설정하는 부분으로, 필수항목
   # schedule:
