@@ -25,7 +25,11 @@ jobs:
         with:
           node-version: '22'  # 특정 Node.js 버전을 사용하도록 설정
 
-        
+      - name: env
+        env: 
+          API_USERNAME: ${{secrets.API_USERNAME}}
+          API_PWD : ${{secrets.API_PWD}}
+
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
         run: |
