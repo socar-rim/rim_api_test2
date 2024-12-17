@@ -30,7 +30,12 @@ jobs:
           API_NAME : ${{ secrets.API_NAME }}
           API_PWD : ${{ secrets.API_PWD }}
         run: |
-          echo "Environment variables are set."
+          if [ -z "$API_NAME" ] || [ -z "$API_PWD" ]; then
+            echo "❌ Environment variables are not set properly."
+            exit 1
+          else
+            echo "✅ Environment variables are set correctly."
+          fi
 
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
