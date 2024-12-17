@@ -29,7 +29,7 @@ jobs:
 
       - name: Create Default Postman Environment
         run: |
-          cat <<EOF > ./env.json
+          cat <<EOF > ./rim_api_test2/env.json
           {
             "id": "b978a6ba-1a76-43a5-badf-084c14613d20",
             "name": "Generated Environment",
@@ -57,9 +57,9 @@ jobs:
       - name: Run Newman Collection
         if: env.file_exists == 'true'
         run: |
-          newman run /home/runner/work/rim_api_test2/rim_api_test2/Login.json \
+          newman run ./Login.json \
             -r json,slackmsg \
-            --environment /home/runner/work/rim_api_test2/rim_api_test2/env.json \
+            --environment ./env.json \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
