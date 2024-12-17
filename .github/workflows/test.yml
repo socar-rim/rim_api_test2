@@ -37,8 +37,8 @@ jobs:
             "id": "b978a6ba-1a76-43a5-badf-084c14613d20",
             "name": "Generated Environment",
             "values": [
-              { "key": "userId", "value": "${{secrets.API_NAME}}", "enabled": true },
-              { "key": "password", "value": "${{secrets.API_PWD}}", "enabled": true }
+              { "key": "userId", "value": "${{ secrets.API_NAME }}", "enabled": true },
+              { "key": "password", "value": "${{ secrets.API_PWD }}", "enabled": true }
             ]
           }
             EOF
@@ -61,8 +61,8 @@ jobs:
         run: |
           newman run ./Login.json \
             -r json,slackmsg \
-            --env-var "userId=${{secrets.API_NAME}}" \
-            --env-var "password=${{secrets.API_PWD}}" \
+            --env-var "userId = ${{ secrets.API_NAME }}" \
+            --env-var "password = ${{ secrets.API_PWD }}" \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
