@@ -57,9 +57,9 @@ jobs:
       - name: Run Newman Collection
         if: env.file_exists == 'true'
         run: |
-          newman run ./Login.json \
+          newman run /home/runner/work/rim_api_test2/rim_api_test2/Login.json \
             -r json,slackmsg \
-            --environment $(pwd)/env.json \
+            --environment /home/runner/work/rim_api_test2/rim_api_test2/env.json \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
