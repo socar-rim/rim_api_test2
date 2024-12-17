@@ -29,7 +29,7 @@ jobs:
 
       - name: Create Default Postman Environment
         run: |
-          cat <<EOF > ./rim_api_test2/env.json
+          cat <<EOF > ./env.json
           {
             "id": "b978a6ba-1a76-43a5-badf-084c14613d20",
             "name": "Generated Environment",
@@ -40,6 +40,7 @@ jobs:
           }
           EOF
           echo "✅ Default env.json file created: $(pwd) "
+          mv /home/runner/work/rim_api_test2/rim_api_test2/env.json ./env.json
           ls -alh ./env.json
 
       # 4. Check if collection file exists
