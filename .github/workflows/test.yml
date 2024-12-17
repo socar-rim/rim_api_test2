@@ -29,6 +29,8 @@ jobs:
         env: 
           API_USERNAME: ${{secrets.API_USERNAME}}
           API_PWD : ${{secrets.API_PWD}}
+        run: |
+          echo "Using env..."
 
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
