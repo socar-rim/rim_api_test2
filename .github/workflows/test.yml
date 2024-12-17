@@ -25,22 +25,20 @@ jobs:
         with:
           node-version: '22'  # 특정 Node.js 버전을 사용하도록 설정
 
-      - name: Use Environment
-        env: 
-          API_NAME : ${{ secrets.API_NAME }}
-          API_PWD : ${{ secrets.API_PWD }}
-        run: |
-          if [ -z "$API_NAME" ] || [ -z "$API_PWD" ]; then
-            echo "❌ Environment variables are not set properly."
-            exit 1
-          else
-            echo "✅ Environment variables are set correctly."
-          fi
-
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
         run: |
           npm install -g newman newman-reporter-slackmsg
+
+
+
+      - name: Set Postman Environment Variables
+        run: |
+          jq --arg API_NAME "${{ secrets.API_NAME }}" --arg API_PWD "${{ secrets.API_PWD }}" \
+            '(.values[] | select(.key=="userId").value) = $API_NAME |
+             (.values[] | select(.key=="password").value) = $API_PWD' env.json > tmp.json && mv tmp.json env.json
+          echo "Updated Postman Environment Variables:"
+          cat env.json
           
       # 4. Check if collection file exists
       - name: Check if Login.json exists
