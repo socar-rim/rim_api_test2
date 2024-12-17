@@ -32,15 +32,15 @@ jobs:
 
       - name: Create Default Postman Environment
         run: |
-              cat <<EOF > env.json
-              {
-                "id": "id",
-                "name": "Generated Environment",
-                "values": [
-                  { "key": "userId", "value": "${{secrets.API_NAME}}", "enabled": true },
-                  { "key": "password", "value": "${{secrets.API_PWD}}", "enabled": true }
-              ]
-            }
+          cat <<EOF > env.json
+          {
+            "id": "id",
+            "name": "Generated Environment",
+            "values": [
+              { "key": "userId", "value": "${{secrets.API_NAME}}", "enabled": true },
+              { "key": "password", "value": "${{secrets.API_PWD}}", "enabled": true }
+            ]
+          }
             EOF
             echo "✅ Default env.json file created."
 
