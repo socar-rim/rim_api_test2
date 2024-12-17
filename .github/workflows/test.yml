@@ -61,8 +61,8 @@ jobs:
         run: |
           newman run ./Login.json \
             -r json,slackmsg \
-            --env-var "userId = ${{ secrets.API_NAME }}" \
             --env-var "password = ${{ secrets.API_PWD }}" \
+            --env-var "userId = ${{ secrets.API_NAME }}" \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
