@@ -39,8 +39,8 @@ jobs:
             ]
           }
           EOF
-          echo "✅ Default env.json file created."
-          cat ./env.json
+          echo "✅ Default env.json file created: $(pwd) "
+          ls -alh ./env.json
 
       # 4. Check if collection file exists
       - name: Check if Login.json exists
