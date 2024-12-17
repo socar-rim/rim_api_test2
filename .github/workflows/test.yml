@@ -34,7 +34,7 @@ jobs:
         run: |
           cat <<EOF > env.json
           {
-            "id": "id",
+            "id": "b978a6ba-1a76-43a5-badf-084c14613d20",
             "name": "Generated Environment",
             "values": [
               { "key": "userId", "value": "${{secrets.API_NAME}}", "enabled": true },
