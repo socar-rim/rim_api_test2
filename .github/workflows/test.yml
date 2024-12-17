@@ -27,7 +27,7 @@ jobs:
 
       - name: Use Environment
         env: 
-          API_USERNAME:${{ secrets.API_USERNAME }}
+          API_USERNAME : ${{ secrets.API_USERNAME }}
           API_PWD : ${{ secrets.API_PWD }}
         run: |
           echo "Environment variables are set."
