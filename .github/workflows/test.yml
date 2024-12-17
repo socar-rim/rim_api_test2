@@ -38,8 +38,8 @@ jobs:
               { "key": "password", "value": "${{ secrets.API_PWD }}", "enabled": true }
             ]
           }
-            EOF
-            echo "✅ Default env.json file created."
+          EOF
+          echo "✅ Default env.json file created."
 
       # 4. Check if collection file exists
       - name: Check if Login.json exists
