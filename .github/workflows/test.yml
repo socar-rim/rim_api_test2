@@ -52,6 +52,8 @@ jobs:
       - name: Run Newman Collection
         if: env.file_exists == 'true'
         run: |
+          echo "API_USERNAME: ${API_USERNAME}"
+          echo "API_PWD: ${API_PWD}"
           newman run ./Login.json \
             -r json,slackmsg \
             --env-var "api_username=${API_USERNAME}" \
