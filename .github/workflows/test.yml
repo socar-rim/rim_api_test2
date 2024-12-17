@@ -56,8 +56,8 @@ jobs:
           echo "API_PWD: ${API_PWD}"
           newman run ./Login.json \
             -r json,slackmsg \
-            --env-var "api_username=${API_NAME}" \
-            --env-var "api_password=${API_PWD}" \
+            --env-var "userId=${API_NAME}" \
+            --env-var "password=${API_PWD}" \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
