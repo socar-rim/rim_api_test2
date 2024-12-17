@@ -27,7 +27,7 @@ jobs:
 
       - name: Use Environment
         env: 
-          API_USERNAME : ${{ secrets.API_USERNAME }}
+          API_NAME : ${{ secrets.API_NAME }}
           API_PWD : ${{ secrets.API_PWD }}
         run: |
           echo "Environment variables are set."
@@ -52,7 +52,7 @@ jobs:
       - name: Run Newman Collection
         if: env.file_exists == 'true'
         run: |
-          echo "API_USERNAME: ${API_USERNAME}"
+          echo "API_USERNAME: ${API_NAME}"
           echo "API_PWD: ${API_PWD}"
           newman run ./Login.json \
             -r json,slackmsg \
