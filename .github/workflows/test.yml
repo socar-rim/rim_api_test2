@@ -59,7 +59,7 @@ jobs:
         run: |
           newman run ./Login.json \
             -r json,slackmsg \
-            --environment ./env.json \
+            --environment /home/runner/work/rim_api_test2/rim_api_test2/env.json \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
