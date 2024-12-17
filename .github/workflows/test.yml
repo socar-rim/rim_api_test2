@@ -27,10 +27,10 @@ jobs:
 
       - name: Use Environment
         env: 
-          API_USERNAME: ${{secrets.API_USERNAME}}
-          API_PWD : ${{secrets.API_PWD}}
+          API_USERNAME:${{ secrets.API_USERNAME }}
+          API_PWD : ${{ secrets.API_PWD }}
         run: |
-          echo "Using env..."
+          echo "Environment variables are set."
 
       # 3. Install Newman and Slack Reporter
       - name: Install Newman and Slack Reporter
@@ -54,8 +54,8 @@ jobs:
         run: |
           newman run ./Login.json \
             -r json,slackmsg \
-            --env-var "API_USERNAME=${API_NAME}" \
-            --env-var "API_PWD=${API_PWD}" \
+            --env-var "api_username=${API_USERNAME}" \
+            --env-var "api_password=${API_PWD}" \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
