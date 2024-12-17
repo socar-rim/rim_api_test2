@@ -30,16 +30,20 @@ jobs:
         run: |
           npm install -g newman newman-reporter-slackmsg
 
-
-
-      - name: Set Postman Environment Variables
+      - name: Create Default Postman Environment
         run: |
-          jq --arg API_NAME "${{ secrets.API_NAME }}" --arg API_PWD "${{ secrets.API_PWD }}" \
-            '(.values[] | select(.key=="userId").value) = $API_NAME |
-             (.values[] | select(.key=="password").value) = $API_PWD' env.json > tmp.json && mv tmp.json env.json
-          echo "Updated Postman Environment Variables:"
-          cat env.json
-          
+              cat <<EOF > env.json
+              {
+                "id": "id",
+                "name": "Generated Environment",
+                "values": [
+                  { "key": "userId", "value": "${{secrets.API_NAME}}", "enabled": true },
+                  { "key": "password", "value": "${{secrets.API_PWD}}", "enabled": true }
+              ]
+            }
+            EOF
+            echo "✅ Default env.json file created."
+
       # 4. Check if collection file exists
       - name: Check if Login.json exists
         id: check_file
