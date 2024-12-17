@@ -27,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"{{api_password}}\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{api_username}}\"\n}",
+					"raw": "{\n    \"password\": \"{{API_PWD}}\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{API_NAME}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
