@@ -159,7 +159,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \" \",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{userId}}\"\n}",
+					"raw": "{\n    \"password\": \"\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{userId}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
