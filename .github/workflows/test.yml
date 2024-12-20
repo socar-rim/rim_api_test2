@@ -46,6 +46,7 @@ jobs:
             -r cli,json,slackmsg \
             --env-var userID=${{ secrets.API_NAME }} \
             --env-var password=${{ secrets.API_PW }} \
+            --verbose \
             --reporter-json-export newman-report.json \
             --reporter-slackmsg-token ${{ secrets.SLACK_BOT_TOKEN }} \
             --reporter-slackmsg-webhookurl ${{ secrets.SLACK_WEBHOOK_URL }} \
