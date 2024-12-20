@@ -27,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"qwer1234!!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser1@yopmail.com\"\n}",
+					"raw": "{\n    \"password\": \"{{password}}\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{userId}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -71,7 +71,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"qwer1234!!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser2@yopmail.com\"\n}",
+					"raw": "{\n    \"password\": \"{{password}}\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser99@yopmail.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -115,7 +115,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"qwer1234!!!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser2@yopmail.com\"\n}",
+					"raw": "{\n    \"password\": \"test1234!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{userId}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -159,7 +159,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"suser2@yopmail.com\"\n}",
+					"raw": "{\n    \"password\": \"{{password}} \",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \" "\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -203,7 +203,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"password\": \"qwer1234!!\",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"\"\n}",
+					"raw": "{\n    \"password\": \" ",\n    \"serviceId\": \"SOCAR_MOBILE_ID\",\n    \"userId\": \"{{userId}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
