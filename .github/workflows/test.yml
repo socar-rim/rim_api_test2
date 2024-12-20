@@ -43,7 +43,7 @@ jobs:
         if: env.file_exists == 'true'
         run: |
           newman run ./Login.json \
-            -r json,slackmsg \
+            -r cli,json,slackmsg \
             --env-var userID=${{ secrets.API_NAME }} \
             --env-var password=${{ secrets.API_PW }} \
             --reporter-json-export newman-report.json \
