@@ -58,7 +58,7 @@
 					"script": {
 						"exec": [
 							"pm.test('아이디 또는 비밀번호를 다시 확인해주세요!', function() {",
-							"    pm.response.to.have.status('400')",
+							"    pm.response.to.have.status(400)",
 							"})"
 						],
 						"type": "text/javascript",
