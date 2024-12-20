@@ -44,6 +44,7 @@ jobs:
         run: |
           newman run ./Login.json \
             -r json,slackmsg \
+            --verbose \
             --env-var userID=${{ secrets.API_NAME }} \
             --env-var password=${{ secrets.API_PWD }} \
             --reporter-json-export newman-report.json \
